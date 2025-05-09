@@ -639,6 +639,29 @@ update estoques SET quantidade = quantidade - NEW.quantidade, data_ultimo_movime
 where produto_id = new.produto_id
 ;
 END$$
+-- SP_NIVEL_INSERT --
+delimiter $$
+          create procedure comercialtdsdb01.sp_nivel_insert(
+		   spnome varchar(45),
+           spsigla varchar(45)
+)
+begin
+		   insert into niveis(nome, sigla) values (spnome, spsigla);
+           select * from niveis where id = last_insert_id();
+end $$
+
+-- SP_NIVEL_UPDATE --
+delimiter $$
+		    create procedure comercialtdsdb01.sp_nivel_update(
+		    spid int,
+            spnome varchar(45),
+            spsigla varchar(45)
+)
+begin
+   update niveis set nome = spnome, sigla = spsigla 
+   where id = spid;
+end $$
+
 
 
 DELIMITER ;
