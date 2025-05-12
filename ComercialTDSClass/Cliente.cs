@@ -8,5 +8,6 @@ namespace ComercialTDSClass
 {
     class Cliente
     {
+        public List<Endereco>? Enderecos { get; set; }
     }
 }

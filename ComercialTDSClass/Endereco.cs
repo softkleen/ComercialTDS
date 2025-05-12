@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace ComercialTDSClass
 {
-    class Endereco
+    public class Endereco
     {
+        public int Id { get; set; }
+        public int ClienteId { get; set; }
+
+        public static List<Endereco> ObterListaPorClienteId(int idCliente)
+        {
+            List<Endereco> enderecos = new();
+
+            return enderecos;
+
+        }
     }
 }
