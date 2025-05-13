@@ -9,8 +9,8 @@ namespace ComercialTDSClass
 {
     public class Cliente
     {
-        public int Id { get; set; }
         public string? Nome { get; set; }
+        public int Id { get; set; }
         public string? Cpf { get; set; }
         public string? Telefone { get; set; }
         public string? Email { get; set; }
@@ -88,9 +88,9 @@ namespace ComercialTDSClass
                             dr.GetString(2),
                             dr.GetString(3),
                             dr.GetString(4),
-                            dr.GetDateTime(4),
                             dr.GetDateTime(5),
-                            dr.GetBoolean(6),
+                            dr.GetDateTime(6),
+                            dr.GetBoolean(7),
                             Endereco.ObterListaPorClienteId(dr.GetInt32(0))
                         );
             }
