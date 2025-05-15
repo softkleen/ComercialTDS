@@ -38,9 +38,21 @@ namespace ComercialTDSDesk
         {
             FrmLogin frmLogin = new();
             frmLogin.btnCancelar.Text = "&Voltar";
-            frmLogin.ShowDialog();           
+            frmLogin.ShowDialog();
             tsslUsuarioLogado.Text = Program.UsuarioLogado.Nome + " - " + Program.UsuarioLogado.Nivel.Nome;
 
+        }
+
+        private void conficraçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nveisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmNivel frmNivel = new();
+            frmNivel.MdiParent = this;
+            frmNivel.Show();
         }
     }
 }
