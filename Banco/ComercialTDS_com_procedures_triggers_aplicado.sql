@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`usuarios` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 1006
+AUTO_INCREMENT = 1001
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -76,11 +76,11 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`categorias` (
   `id` INT(4) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(40) NOT NULL,
+  `nome` VARCHAR(255) NOT NULL,
   `sigla` CHAR(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 246
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`clientes` (
   UNIQUE INDEX `cpf_UNIQUE` (`cpf` ASC) ,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
 ENGINE = InnoDB
-AUTO_INCREMENT = 25
+AUTO_INCREMENT = 10001
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`enderecos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 24
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -144,6 +144,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`produtos` (
   `classe_desconto` DECIMAL(10,2) NULL DEFAULT NULL,
   `imagem` BLOB NULL DEFAULT NULL,
   `data_cad` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+   `descontinuado` BIT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `idProduto_UNIQUE` (`id` ASC) ,
   UNIQUE INDEX `Produtocol_UNIQUE` (`cod_barras` ASC) ,
@@ -154,7 +155,8 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`produtos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+-- hashcode
+AUTO_INCREMENT = 7400001
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -216,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`pedidos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 100127
+AUTO_INCREMENT = 100001
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -244,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`itempedido` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 14
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -524,6 +526,7 @@ begin
     spestoque_minimo,
     spclasse_desconto,
     null,
+    default, 
     default);
     select last_insert_id();
 end$$
@@ -544,11 +547,13 @@ spvalor_unit decimal(10,2),
 spunidade_venda varchar(12),
 spcategoria_id int,
 spestoque_minimo decimal(10,2),
-spclasse_desconto decimal(10,2))
+spclasse_desconto decimal(10,2),
+spdescontinuado bit(1)
+)
 begin
 	update produtos set cod_barras = spcod_barras, descricao = spdescricao,
     valor_unit = spvalor_unit, unidade_venda = spunidade_venda, categoria_id = spcategoria_id,
-    estoque_minimo = spestoque_minimo, classe_desconto = spclasse_desconto
+    estoque_minimo = spestoque_minimo, classe_desconto = spclasse_desconto, descontinuado = spdescontinuado 
     where id = spid;
 end$$
 
