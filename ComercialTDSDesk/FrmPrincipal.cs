@@ -33,6 +33,19 @@ namespace ComercialTDSDesk
             }
             Show();
         }
+        private void AssociaPanel(Form form)
+        {
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.MaximizeBox = true;
+            form.AutoSize = true;
+            form.Size = pnlCentral.Size;
+            pnlCentral.Controls.Clear();
+            pnlCentral.Controls.Add(form);
+            form.Show();
+            pnlCentral.Visible = true;
+        }
+
 
         private void trocarDeUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -50,9 +63,12 @@ namespace ComercialTDSDesk
 
         private void nveisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmNivel frmNivel = new();
-            frmNivel.MdiParent = this;
-            frmNivel.Show();
+            AssociaPanel(new FrmNivel());
+        }
+
+        private void incluirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AssociaPanel(new FrmUsuario());
         }
     }
 }

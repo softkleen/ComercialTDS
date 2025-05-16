@@ -68,6 +68,7 @@
             tsslUsuarioLogado = new ToolStripStatusLabel();
             toolStripDropDownButton1 = new ToolStripDropDownButton();
             trocarDeUsuárioToolStripMenuItem = new ToolStripMenuItem();
+            pnlCentral = new Panel();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -77,7 +78,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { cadastrosToolStripMenuItem, operaçãoToolStripMenuItem, movimentoToolStripMenuItem, conficraçõesToolStripMenuItem, sairToolStripMenuItem1, sairToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Size = new Size(821, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -168,6 +169,7 @@
             incluirToolStripMenuItem1.Name = "incluirToolStripMenuItem1";
             incluirToolStripMenuItem1.Size = new Size(107, 22);
             incluirToolStripMenuItem1.Text = "&Incluir";
+            incluirToolStripMenuItem1.Click += incluirToolStripMenuItem1_Click;
             // 
             // listarToolStripMenuItem1
             // 
@@ -301,7 +303,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { tsslUsuarioLogado, toolStripDropDownButton1 });
             statusStrip1.Location = new Point(0, 428);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.Size = new Size(821, 22);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -328,11 +330,20 @@
             trocarDeUsuárioToolStripMenuItem.Text = "Trocar de Usuário";
             trocarDeUsuárioToolStripMenuItem.Click += trocarDeUsuárioToolStripMenuItem_Click;
             // 
+            // pnlCentral
+            // 
+            pnlCentral.Location = new Point(193, 61);
+            pnlCentral.Name = "pnlCentral";
+            pnlCentral.Size = new Size(544, 348);
+            pnlCentral.TabIndex = 4;
+            pnlCentral.Visible = false;
+            // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(821, 450);
+            Controls.Add(pnlCentral);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -391,5 +402,6 @@
         private ToolStripMenuItem vendasToolStripMenuItem;
         private ToolStripMenuItem consultarToolStripMenuItem2;
         private ToolStripMenuItem emitirNotaToolStripMenuItem;
+        private Panel pnlCentral;
     }
 }
