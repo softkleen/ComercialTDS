@@ -230,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `comercialtdsdb01`.`itempedido` (
   `pedido_id` INT(11) NOT NULL,
   `produto_id` INT(11) NOT NULL,
   `valor_unit` DECIMAL(10,2) NOT NULL,
-  `quantidade` DECIMAL(10,2) NOT NULL,
+  `quantidade` DECIMAL(10,3) NOT NULL,
   `desconto` DECIMAL(10,2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_ItemPedido_Pedido1_idx` (`pedido_id` ASC) ,
@@ -448,7 +448,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE `comercialtdsdb01`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_itempedido_insert`(sppedido_id int, spproduto_id int, spquantidade decimal (10,2), spdesconto decimal(10,2))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_itempedido_insert`(sppedido_id int, spproduto_id int, spquantidade decimal (10,3), spdesconto decimal(10,2))
 begin
 	insert into itempedido
     values (0, sppedido_id, spproduto_id, (select valor_unit from produtos where id = spproduto_id), spquantidade, spdesconto);
@@ -463,7 +463,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE `comercialtdsdb01`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_itempedido_update`(spid int,spquantidade decimal(10,2), spdesconto decimal(10,2))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_itempedido_update`(spid int,spquantidade decimal(10,3), spdesconto decimal(10,2))
 begin
 	update itempedido set quantidade = spquantidade, desconto = spdesconto
     where id = spid;
@@ -667,9 +667,70 @@ begin
    where id = spid;
 end $$
 
+-- *********************************************************************
+-- Alteração da procedure de insert de produtos, para incluir a imagem
+USE `comercialtdsdb01`;
+DROP procedure IF EXISTS `comercialtdsdb01`.`sp_produto_insert`;
+;
+
+DELIMITER $$
+USE `comercialtdsdb01`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_produto_insert`(
+spcod_barras varchar(60), 
+spdescricao varchar(60),
+spvalor_unit decimal(10,2),
+spunidade_venda varchar(12),
+spcategoria_id int,
+spestoque_minimo decimal(10,3),
+spclasse_desconto decimal(10,4),
+spimagem blob -- adicionando a imagem
+)
+begin
+	insert into produtos
+    values(
+    0,
+    spcod_barras, 
+    spdescricao, 
+    spvalor_unit, 
+    spunidade_venda,
+    spcategoria_id, 
+    spestoque_minimo,
+    (spclasse_desconto / 100),
+    spimagem,
+    default, 
+    default);
+    select last_insert_id();
+end$$
 
 
 DELIMITER ;
+USE `comercialtdsdb01`;
+DROP procedure IF EXISTS `comercialtdsdb01`.`sp_produto_update`;
+;
+DELIMITER $$
+USE `comercialtdsdb01`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_produto_update`(
+spid int,
+spcod_barras varchar(60), 
+spdescricao varchar(60),
+spvalor_unit decimal(10,2),
+spunidade_venda varchar(12),
+spcategoria_id int,
+spestoque_minimo decimal(10,3),
+spclasse_desconto decimal(10,4),
+spimagem blob,
+spdescontinuado bit(1)
+)
+begin
+	update produtos set cod_barras = spcod_barras, descricao = spdescricao,
+    valor_unit = spvalor_unit, unidade_venda = spunidade_venda, categoria_id = spcategoria_id,
+    estoque_minimo = spestoque_minimo, classe_desconto = (spclasse_desconto / 100), descontinuado = spdescontinuado, 
+    imagem = spimagem
+    where id = spid;
+end$$
+
+DELIMITER ;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

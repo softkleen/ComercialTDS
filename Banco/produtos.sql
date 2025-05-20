@@ -12,3 +12,15 @@ INSERT INTO `produtos`
 
 select * from produtos;
 
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400001;
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400002;
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400003;
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400004;
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400005;
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400006;
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400007;
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400008;
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400009;
+update produtos set imagem  = (select imagem from produtos where id = 7400012) where id = 7400010;
+
+

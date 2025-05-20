@@ -123,6 +123,5 @@ namespace ComercialTDSClass
             cmd.Connection.Close();
             return clientes;
         }
-      
     }
 }
