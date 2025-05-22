@@ -61,5 +61,19 @@ namespace ComercialTDSDesk
         {
             nudValorUnit.Select(0, 9);
         }
+
+        private void txtCodBarras_TextChanged(object sender, EventArgs e)
+        {
+            // 7400001
+            if (txtCodBarras.Text.Length > 6)
+            {
+
+            }
+        }
+
+        private void nudEstoqueMinimo_Enter(object sender, EventArgs e)
+        {
+            nudEstoqueMinimo.Select(0, 9);
+        }
     }
 }

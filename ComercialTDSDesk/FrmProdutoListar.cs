@@ -53,7 +53,8 @@ namespace ComercialTDSDesk
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-
+            
+      
 
         }
 

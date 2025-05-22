@@ -67,6 +67,7 @@
             txtCodBarras.PlaceholderText = "Código de Barras";
             txtCodBarras.Size = new Size(200, 23);
             txtCodBarras.TabIndex = 0;
+            txtCodBarras.TextChanged += txtCodBarras_TextChanged;
             // 
             // txtDescricao
             // 
@@ -109,6 +110,7 @@
             nudEstoqueMinimo.Name = "nudEstoqueMinimo";
             nudEstoqueMinimo.Size = new Size(100, 23);
             nudEstoqueMinimo.TabIndex = 5;
+            nudEstoqueMinimo.Enter += nudEstoqueMinimo_Enter;
             // 
             // nudClasseDesconto
             // 
