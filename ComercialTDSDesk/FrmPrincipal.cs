@@ -80,5 +80,10 @@ namespace ComercialTDSDesk
         {
             AssociaPanel(new FrmProdutoListar());
         }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AssociaPanel(new FrmPedido());
+        }
     }
 }
