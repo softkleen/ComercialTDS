@@ -19,7 +19,7 @@ namespace ComercialTDSClass
         public bool Ativo { get; set; }
         public List<Endereco>? Enderecos { get; set; }
         public Cliente() { } 
-        public Cliente(string nome, string cpf, string telefone, string email, DateTime dataNascimento, DateTime dataCadastro, bool ativo, List<Endereco>? enderecos)
+        public Cliente(string nome, string cpf, string telefone, string email, DateTime dataNascimento )
         {// este é o construtor que utilizaremos para inserir o cliente
             Nome = nome;
             Cpf = cpf;

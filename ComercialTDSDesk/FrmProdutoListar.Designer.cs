@@ -34,6 +34,10 @@
             clnDescricao = new DataGridViewTextBoxColumn();
             clnValorUnit = new DataGridViewTextBoxColumn();
             picImagem = new PictureBox();
+            dateTimePicker1 = new DateTimePicker();
+            button1 = new Button();
+            maskedTextBox1 = new MaskedTextBox();
+            maskedTextBox2 = new MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProduto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picImagem).BeginInit();
             SuspendLayout();
@@ -96,11 +100,52 @@
             picImagem.TabIndex = 9;
             picImagem.TabStop = false;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(57, 377);
+            dateTimePicker1.MaxDate = new DateTime(2025, 5, 27, 0, 0, 0, 0);
+            dateTimePicker1.MinDate = new DateTime(1925, 1, 1, 0, 0, 0, 0);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(102, 23);
+            dateTimePicker1.TabIndex = 10;
+            dateTimePicker1.Value = new DateTime(2025, 5, 27, 0, 0, 0, 0);
+            // 
+            // button1
+            // 
+            button1.Location = new Point(466, 379);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 11;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // maskedTextBox1
+            // 
+            maskedTextBox1.Location = new Point(209, 377);
+            maskedTextBox1.Mask = "(99) 00000-0000";
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new Size(100, 23);
+            maskedTextBox1.TabIndex = 12;
+            // 
+            // maskedTextBox2
+            // 
+            maskedTextBox2.Location = new Point(349, 377);
+            maskedTextBox2.Mask = "000,000,000-99";
+            maskedTextBox2.Name = "maskedTextBox2";
+            maskedTextBox2.Size = new Size(100, 23);
+            maskedTextBox2.TabIndex = 13;
+            // 
             // FrmProdutoListar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(899, 446);
+            Controls.Add(maskedTextBox2);
+            Controls.Add(maskedTextBox1);
+            Controls.Add(button1);
+            Controls.Add(dateTimePicker1);
             Controls.Add(picImagem);
             Controls.Add(dgvProduto);
             Name = "FrmProdutoListar";
@@ -109,6 +154,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvProduto).EndInit();
             ((System.ComponentModel.ISupportInitialize)picImagem).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -119,5 +165,9 @@
         private DataGridViewTextBoxColumn clnDescricao;
         private DataGridViewTextBoxColumn clnValorUnit;
         private PictureBox picImagem;
+        private DateTimePicker dateTimePicker1;
+        private Button button1;
+        private MaskedTextBox maskedTextBox1;
+        private MaskedTextBox maskedTextBox2;
     }
 }

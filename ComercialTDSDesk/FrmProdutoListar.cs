@@ -53,8 +53,8 @@ namespace ComercialTDSDesk
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            
-      
+
+
 
         }
 
@@ -66,6 +66,16 @@ namespace ComercialTDSDesk
                 picImagem.Image = Image.FromStream(ms);
                 picImagem.SizeMode = PictureBoxSizeMode.Zoom;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+            maskedTextBox1.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            maskedTextBox2.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            string tel = maskedTextBox1.Text;
+            string cpf = maskedTextBox2.Text; 
+            MessageBox.Show($"{tel} - {cpf}");
         }
     }
 }

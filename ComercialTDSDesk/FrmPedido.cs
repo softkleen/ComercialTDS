@@ -62,7 +62,7 @@ namespace ComercialTDSDesk
                 txtIdProd.Text = produto.Id.ToString();
                 txtDescricao.Text = produto.Descricao;
                 txtValorUnit.Text = produto.ValorUnit.ToString("R$##.00");
-                label4.Text = $"R$ {produto.ValorUnit * produto.ClasseDesconto}";
+                label4.Text = $"R$ {(produto.ValorUnit * produto.ClasseDesconto).ToString("##.00")}";
             }
 
 
